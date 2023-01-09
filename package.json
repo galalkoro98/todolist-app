@@ -1,0 +1,40 @@
+{
+  "name": "todolist-app",
+  "version": "1.0.0",
+  "description": "A simple todolist app using node.js, express, ejs, and mongoDB",
+  "main": "init.js",
+  "scripts": {
+    "server": "json-server --watch db.json --port 5000",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/galalkoro98/todolist-app.git",
+    "directory": "todolist-app",
+    "branch": "main",
+    "commit": "f3b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5"
+  },
+  "keywords": [
+    "node.js",
+    "express",
+    "ejs",
+    "mongoDB"
+  ],
+  "author": "Galal Koro",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/galalkoro98/todolist-app/issues",
+    "directory": "todolist-app",
+    "branch": "main",
+    "commit": "f3b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b5b"
+  },
+  "homepage": "https://github.com/galalkoro98/todolist-app#readme",
+  "dependencies": {
+    "body-parser": "^1.20.1",
+    "ejs": "^3.1.8",
+    "express": "^4.18.2",
+    "json-server": "^0.17.0",
+    "nodemon": "^2.0.20"
+  }
+}
