@@ -31,7 +31,7 @@ Here are the steps you can follow to build a simple to-do list application that 
 
  6- In the **JavaScript** file, you'll need to use the Fetch API or a library like **Axios** to make HTTP requests to the JSON server to retrieve, add, update and delete to-dos.
 
-     You can use the `GET` method to retrieve the list of to-dos from the server, and the POST method to add new to-dos to the list. You can use `PUT` to update to-do and DELETE method to delete it.
+**You can use the `GET` method to retrieve the list of to-dos from the server, and the POST method to add new to-dos to the list. You can use `PUT` to update to-do and DELETE method to delete it.**
 
  `which I did not use in my case yet put method and delete`
 
