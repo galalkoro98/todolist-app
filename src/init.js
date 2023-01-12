@@ -1,59 +1,54 @@
-const List = class {
+const Tasks = class {
   constructor() {
-    //  doms
-    this.$form = $("#peopleForm");
-    this.$input = $("#people");
-    this.$list = $(".list");
-    this.people = [];
+    // doms
+    this.tasksForm = document.getElementById("tasksForm");
+    this.input = document.getElementById("task");
+    this.list = document.querySelector(".list");
+    this.tasks = [];
     this.init();
   }
-  //  methods
+
+  // methods
   init() {
-    fetch("./getPeople")
+    fetch("/getTasks")
       .then((res) => res.json())
       .then((data) => {
-        this.people = data;
+        console.log(data);
+        this.tasks = data.tasks;
       })
       .catch((err) => console.log(err));
 
-    $("#peopleForm").on("submit", (e) => {
+    this.tasksForm.addEventListener("submit", (e) => {
       e.preventDefault();
-      this.add(e);
+      this.addTask();
     });
   }
 
-  add(e) {
-    const newPerson = $("#people").val();
-    this.append(newPerson);
-    $("#people").val("");
+  addTask(e) {
+    const newTask = this.input.value;
+    this.append(newTask);
   }
 
-  show() {
-    this.people.forEach((person) => {
-      $(".list").append(`<li>${person}</li>`);
-    });
+  append(newTask) {
+    const li = document.createElement("li");
+    li.classList.add("task");
+    li.innerHTML = `
+        <span class="task-text">${newTask}</span>
+        <span class="task-delete"><i class="fas fa-trash-alt"></i></span>
+        `;
+    this.list.appendChild(li);
+    this.input.value = "";
+    this.save(newTask);
+    this.deleteTask(li);
   }
 
-  append(people) {
-    this.people.push(people);
-    this.save(this.people);
-    this.show();
-  }
-
-  remove(people) {
-    this.people = this.people.filter((person) => person !== people);
-    this.save(this.people);
-    this.show();
-  }
-
-  save(people) {
-    const data = JSON.stringify(people);
-    fetch("/savePeople", {
+  save(task) {
+    fetch("/saveTask", {
       method: "POST",
+      body: JSON.stringify({ task }),
       headers: {
         "Content-Type": "application/json",
       },
-      body: data,
     })
       .then((res) => res.json())
       .then((data) => {
@@ -61,6 +56,13 @@ const List = class {
       })
       .catch((err) => console.log(err));
   }
+
+  deleteTask(li) {
+    const deleteBtn = li.querySelector(".task-delete");
+    deleteBtn.addEventListener("click", () => {
+      li.remove();
+    });
+  }
 };
 
-const list = new List();
+const tasks = new Tasks();
