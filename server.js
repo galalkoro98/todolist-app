@@ -3,19 +3,19 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(express.static(__dirname + "/public"));
+app.use(express.static(__dirname + "/"));
+app.use(express.json());
 
-app.get("./src/getPeople", (req, res) => {
-  //   res.sendFile(__dirname + "/public/index.html");
+app.get("/getTasks", (req, res) => {
   const data = JSON.parse(fs.readFileSync("db.json"));
   console.log(data);
   res.json(data);
 });
 
-app.post("./src/savePeople", (req, res) => {
-  const data = JSON.stringify(req.body);
-  fs.writeFileSync("db.json", data);
-  res.json({ status: "success" });
+app.post("/saveTask", (req, res) => {
+  const data = req.body;
+  fs.writeFileSync("db.json", JSON.stringify(data));
+  res.json({ status: "saved" });
 });
 
 app.listen(PORT, () => {
