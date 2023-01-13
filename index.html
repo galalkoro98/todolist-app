@@ -17,12 +17,22 @@
         </div>
         <form id="tasksForm" class="main">
             <label class="label">
-                <input type="text" name="task" id="task" placeholder="Enter your task" required>
+                <input type="text" name="task" class="input" id="task" placeholder="Enter your task" required>
+                <!-- id input for the db.js -->
+                <input type="hidden" name="id" id="id" value="">
+
             </label>
-            <input type="submit"  value="add" class="input-add" >
+
+            <div class="button-container">
+                <input type="hidden" name="id" id="id" value="">
+                <input type="submit"  value="add" class="input-add" >
+                <input type="submit"  value="update" class="input-update" >
+            </div>
         </form>
         <div class="list"></div>
     </div>
+
+    
     
     <script type="module" src="./src/init.js" defer></script>
 

@@ -10,12 +10,35 @@ app.get("/getTasks", (req, res) => {
   const data = JSON.parse(fs.readFileSync("db.json"));
   console.log(data);
   res.json(data);
+  res.json({ status: "get" });
 });
 
-app.post("/saveTask", (req, res) => {
+app.post("/addTask", (req, res) => {
   const data = req.body;
-  fs.writeFileSync("db.json", JSON.stringify(data));
-  res.json({ status: "saved" });
+  const db = JSON.parse(fs.readFileSync("db.json"));
+  db.task.push(data);
+  fs.writeFileSync("db.json", JSON.stringify(db));
+  res.json({ status: "added" });
+});
+
+// update tasks
+app.post("/updateTask", (req, res) => {
+  // update inside the array {"task": []}
+  const data = req.body;
+  const db = JSON.parse(fs.readFileSync("db.json"));
+  db.task = data;
+  fs.writeFileSync("db.json", JSON.stringify(db));
+  res.json({ status: "updated" });
+});
+
+// delete tasks
+app.post("/deleteTask", (req, res) => {
+  // delete inside the array {"task": []}
+  const data = req.body;
+  const db = JSON.parse(fs.readFileSync("db.json"));
+  db.task = data;
+  fs.writeFileSync("db.json", JSON.stringify(db));
+  res.json({ status: "deleted" });
 });
 
 app.listen(PORT, () => {
