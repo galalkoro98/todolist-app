@@ -2,6 +2,7 @@ import { handler } from "../handler/handler.js";
 import { inputAdd, inputUpdate, tasksForm } from "../myVars.js";
 import { updateTask } from "../logic/updateTask.js";
 import { addTask } from "../logic/addTask.js";
+import { deleteTask } from "../logic/deleteTask.js";
 
 export const listener = () => {
   handler();
@@ -16,6 +17,10 @@ export const listener = () => {
 
     if (e.target.classList.contains("input-update")) {
       updateTask();
+    }
+
+    if (e.target.classList.contains("input-delete")) {
+      deleteTask();
     }
   });
 };

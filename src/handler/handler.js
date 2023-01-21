@@ -1,13 +1,9 @@
 import { append } from "../component/append.js";
-import { list } from "../myVars.js";
+import { inputUpdate, inputAdd, input } from "../myVars.js";
 import { addTask } from "../logic/addTask.js";
 import { deleteTask } from "../logic/deleteTask.js";
 import { updateTask } from "../logic/updateTask.js";
 import { getInit } from "../logic/getInit.js";
-import { input } from "../myVars.js";
-import { inputAdd } from "../myVars.js";
-import { inputDelete } from "../myVars.js";
-import { inputUpdate } from "../myVars.js";
 
 export const handler = async (e) => {
   const item = e.target;
@@ -43,17 +39,5 @@ export const handler = async (e) => {
 
   if (item.classList.contains("input-get")) {
     getInit();
-  }
-
-  if (item.classList.contains("input-clear")) {
-    list.innerHTML = "";
-  }
-
-  if (item.classList.contains("input-reset")) {
-    window.location.href = "/";
-  }
-
-  if (item.classList.contains("input-close")) {
-    window.close();
   }
 };
