@@ -1,5 +1,3 @@
-import { tasks } from "../myVars";
-
 export const getInit = async () => {
   try {
     const res = await fetch("/getTasks");
