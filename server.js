@@ -13,7 +13,7 @@ app.get("/getTasks", (req, res) => {
   res.json({ status: "get" });
 });
 
-app.post("/addTask", (req, res) => {
+app.post("/saveTask", (req, res) => {
   const data = req.body;
   const db = JSON.parse(fs.readFileSync("db.json"));
   db.task.push(data);
